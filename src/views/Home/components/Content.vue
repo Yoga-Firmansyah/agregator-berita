@@ -29,7 +29,6 @@ const feedsData = ref([]);
 // Fetch data based on props
 const fetchFilteredData = async () => {
   if (props.type && props.source) {
-    feedsData.value = feedStore.feeds;
     const promises = props.source.map(async (src) => {
       const store = storeMap[src];
       if (store) {
