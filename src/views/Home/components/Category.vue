@@ -1,6 +1,6 @@
 <script setup>
 import { categorySource } from '@/config/categorySource';
-import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
+import { ref, onMounted, onBeforeUnmount, watch, capitalize } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
@@ -72,7 +72,7 @@ onBeforeUnmount(() => {
             route.path === `/category/${category.type}` ? 'bg-orange-600 text-white' : ''
           ]"
         >
-          {{ category.type }}
+          {{ processTitle(category.type) }}
         </router-link>
       </div>
     </div>
