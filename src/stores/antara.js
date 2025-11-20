@@ -10,7 +10,7 @@ export const useAntaraStore = defineStore('antara', () => {
     async function getAntaraFeeds() {
         try {
             const promises = antaraTypes.map(type =>
-                axios.get(`https://api-berita-indonesia.vercel.app/antara/${type}`)
+                axios.get(`https://berita-indo-api-next.vercel.app/api/antara-news/${type}`)
             );
 
             const responses = await Promise.all(promises);
@@ -25,7 +25,7 @@ export const useAntaraStore = defineStore('antara', () => {
 
     async function getLatestNews() {
         try {
-            const response = await axios.get('https://api-berita-indonesia.vercel.app/antara/terbaru');
+            const response = await axios.get('https://berita-indo-api-next.vercel.app/api/antara-news/terbaru');
             antaraLatestNews.value = response.data.data.posts || [];
         } catch (err) {
             console.error('Error fetching latest news:', err);
@@ -34,7 +34,7 @@ export const useAntaraStore = defineStore('antara', () => {
 
     async function getSpecificFeed(type) {
         try {
-            const response = await axios.get(`https://api-berita-indonesia.vercel.app/antara/${type}`);
+            const response = await axios.get(`https://berita-indo-api-next.vercel.app/api/antara-news/${type}`);
             antaraFeeds.value[type] = response.data.data.posts || [];
             return antaraFeeds.value[type];
         } catch (err) {
